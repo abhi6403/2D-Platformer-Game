@@ -5,18 +5,24 @@ using UnityEngine;
 public class playerController : MonoBehaviour
 {
     public Animator animator;
-    //public BoxCollider2D collider;
-    private float crouchHeight = 1f;
-    private float standHeight = 2f;
+    public BoxCollider2D playercollider;
 
-    private void Update()
+    private Vector2 boxColliderSize;
+    private Vector2 boxColliderOffset;
+
+    private void Start()
+    {
+        boxColliderSize = playercollider.size;
+        boxColliderOffset = playercollider.offset;
+    }
+    public void Update()
     {
         runAnimation();
         crouchAnimation();
         jumpAnimation();
     }
 
-    private void runAnimation()
+    public void runAnimation()
     {
         float speed = Input.GetAxisRaw("Horizontal");
         animator.SetFloat("speed", Mathf.Abs(speed));
@@ -33,20 +39,42 @@ public class playerController : MonoBehaviour
         transform.localScale = scale;
     }
 
-    private void crouchAnimation()
+    public void crouchAnimation()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKey(KeyCode.LeftControl))
         {
-            animator.SetBool("Crouch", true);
+            Crouch(true);
         } else
         {
-            animator.SetBool("Crouch",false);
+            Crouch(false);
         }
     }
-    private void jumpAnimation()
-    {
-        float jump = Input.GetAxisRaw("Vertical");
-        animator.SetFloat("Jump", jump);
 
+    public void Crouch(bool crouch)
+    {
+        if(crouch == true)
+        {
+            float offX = 0.000975f;
+            float offY = 0.5f;
+
+            float sizeX = 0.33f;
+            float sizeY = 1.02f;
+
+            playercollider.size = new Vector2 (sizeX, sizeY);
+            playercollider.offset = new Vector2 (offX, offY);
+        } else
+        {
+            playercollider.size = boxColliderSize;
+            playercollider.offset = boxColliderOffset;
+        }
+        animator.SetBool("Crouch",crouch);
+    }
+    public void jumpAnimation()
+    {
+        float jump = Input.GetAxis("Vertical");
+        if(jump > 0 )
+        {
+            animator.SetTrigger("Jump");
+        }
     }
 }
