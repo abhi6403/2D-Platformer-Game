@@ -8,6 +8,8 @@ public class playerController : MonoBehaviour
     public BoxCollider2D playercollider;
     public float speed;
     public float jump;
+    public Transform groundCheck;
+    public LayerMask groundLayer;
 
     private Vector2 boxColliderSize;
     private Vector2 boxColliderOffset;
@@ -65,12 +67,16 @@ public class playerController : MonoBehaviour
         transform.position = position;
 
         //Vertical movement
-        if(vertical > 0 )
+        if(vertical > 0 && isGrounded())
         {
             playerRigidBody.AddForce(new Vector2(0f, jump), ForceMode2D.Force);
         }
     }
 
+     bool isGrounded()
+    {
+        return Physics2D.OverlapCapsule(groundCheck.position, new Vector2(0.58f, 0.07f), CapsuleDirection2D.Horizontal, 0,groundLayer);
+    }
 
     public void crouchAnimation()
     {
