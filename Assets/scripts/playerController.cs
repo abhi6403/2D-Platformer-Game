@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour
 {
-    public Animator animator;
+    public Animator playeranimator;
     public BoxCollider2D playercollider;
     public float speed;
     public float jump;
@@ -35,7 +35,7 @@ public class playerController : MonoBehaviour
     public void playerMovementAnimation(float horizontal, float vertical)
     {
         
-        animator.SetFloat("speed", Mathf.Abs(horizontal));
+        playeranimator.SetFloat("speed", Mathf.Abs(horizontal));
 
         //Running animation
         Vector3 scale = transform.localScale;
@@ -52,10 +52,10 @@ public class playerController : MonoBehaviour
         //Jump animation
         if(vertical > 0)
         {
-            animator.SetBool("Jump", true);
+            playeranimator.SetBool("Jump", true);
         }else
         {
-            animator.SetBool("Jump",false);
+            playeranimator.SetBool("Jump",false);
         }
     }
 
@@ -106,6 +106,6 @@ public class playerController : MonoBehaviour
             playercollider.size = boxColliderSize;
             playercollider.offset = boxColliderOffset;
         }
-        animator.SetBool("Crouch",crouch);
+        playeranimator.SetBool("Crouch",crouch);
     }
 }
