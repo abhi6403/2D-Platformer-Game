@@ -6,11 +6,14 @@ public class playerController : MonoBehaviour
 {
     public Animator playeranimator;
     public BoxCollider2D playercollider;
+    public ScoreController scoreController;
+
     public float speed;
     public float jumpForce;
+    public bool crouch;
+
     public Transform groundCheck;
     public LayerMask groundLayer;
-    public bool crouch;
 
     private Vector2 boxColliderSize;
     private Vector2 boxColliderOffset;
@@ -95,6 +98,12 @@ public class playerController : MonoBehaviour
             playercollider.offset = boxColliderOffset;
             playeranimator.SetBool("Crouch", crouch);
         }
+    }
+
+    public void PickUpKey()
+    {
+        Debug.Log("Picked up the key");
+        scoreController.IncreaseScore(10);
     }
 
    /* private void OnCollisionStay2D(Collision2D other)
