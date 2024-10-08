@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    float startPosX = -9.22f;
-    float startPosY = -2.38f;
+   // float startPosX = -9.22f;
+    //float startPosY = -2.38f;
 
     public GameObject player;
     public Transform respawnPoint;

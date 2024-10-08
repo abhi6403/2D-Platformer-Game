@@ -105,6 +105,12 @@ public class playerController : MonoBehaviour
         Debug.Log("Picked up the key");
         scoreController.IncreaseScore(10);
     }
+    
+    public void KillPlayer()
+    {
+        Debug.Log("Player is Dead");
+        Destroy(gameObject);
+    }
 
    /* private void OnCollisionStay2D(Collision2D other)
     {
