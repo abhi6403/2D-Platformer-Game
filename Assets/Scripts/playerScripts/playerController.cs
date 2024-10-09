@@ -13,17 +13,19 @@ public class playerController : MonoBehaviour
     public float jumpForce;
     public bool crouch;
 
-    public Transform groundCheck;
-    public LayerMask groundLayer;
+    //public Transform groundCheck;
+    //public LayerMask groundLayer;
 
     private Vector2 boxColliderSize;
     private Vector2 boxColliderOffset;
     private Rigidbody2D playerRigidBody;
+    private Camera mainCamera;
 
-    private bool isGrounded = false;
+    //private bool isGrounded = false;
 
     private void Start()
     {
+        mainCamera = Camera.main;
         boxColliderSize = playercollider.size;
         boxColliderOffset = playercollider.offset;
 
@@ -110,6 +112,7 @@ public class playerController : MonoBehaviour
     public void KillPlayer()
     {
         Debug.Log("Player is Dead");
+        mainCamera.transform.parent = null;
         Destroy(gameObject);
     }
 
