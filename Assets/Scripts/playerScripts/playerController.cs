@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class playerController : MonoBehaviour
 {
@@ -110,6 +111,19 @@ public class playerController : MonoBehaviour
     {
         Debug.Log("Player is Dead");
         Destroy(gameObject);
+    }
+
+    public void reducePlayerHealth()
+    {
+        Debug.Log("Reduced health by one");
+        if(HealthUIController.health <= 0)
+        {
+            SceneManager.LoadScene(0);
+        }
+        else
+        {
+            HealthUIController.health -= 1;
+        }
     }
 
    /* private void OnCollisionStay2D(Collision2D other)
