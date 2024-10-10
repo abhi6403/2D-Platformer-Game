@@ -22,11 +22,4 @@ public class GameManager : MonoBehaviour
 
         }*/
     }
-
-    /*public void restartLevel()
-    {
-        Time.timeScale = 1.0f;
-        HealthUIController.health = 4;
-        SceneManager.LoadScene(0);
-    }*/
 }

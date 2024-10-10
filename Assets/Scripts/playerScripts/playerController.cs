@@ -8,6 +8,7 @@ public class playerController : MonoBehaviour
     public Animator playeranimator;
     public BoxCollider2D playercollider;
     public ScoreController scoreController;
+    public GameManager gameManager;
 
     public float speed;
     public float jumpForce;
@@ -121,7 +122,7 @@ public class playerController : MonoBehaviour
         Debug.Log("Reduced health by one");
         if(HealthUIController.health <= 0)
         {
-            SceneManager.LoadScene(0);
+            KillPlayer();
         }
         else
         {
