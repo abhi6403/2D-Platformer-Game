@@ -8,6 +8,8 @@ using UnityEngine.UI;
 public class LobbyUIController : MonoBehaviour
 {
     public Button playButton;
+    public GameObject levelSelection;
+
     public void Start()
     {
         playButton.onClick.AddListener(PlayGame);
@@ -15,6 +17,7 @@ public class LobbyUIController : MonoBehaviour
 
     private void PlayGame()
     {
-        SceneManager.LoadScene(1);
+        //SceneManager.LoadScene(1);
+        levelSelection.SetActive(true);
     }
 }

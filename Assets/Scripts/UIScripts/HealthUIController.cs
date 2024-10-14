@@ -11,7 +11,7 @@ public class HealthUIController : MonoBehaviour
     public static int health;
 
     public GameObject heart0, heart1, heart2, gameOver;
-    public Button restartButton;
+    //public Button restartButton;
 
     private void Start()
     {
@@ -19,17 +19,17 @@ public class HealthUIController : MonoBehaviour
         heart0.gameObject.SetActive(true);
         heart1.gameObject.SetActive(true);
         heart2.gameObject.SetActive(true);
-        gameOver.gameObject.SetActive(false);
+       // gameOver.gameObject.SetActive(false);
         
     }
 
-    private void RestartLevel()
+    /*private void RestartLevel()
     {
         gameOver.gameObject.SetActive(false);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene();
         Time.timeScale = 1.0f;
         health = 3;  
-    }
+    }*/
 
     private void Update()
     {
@@ -65,8 +65,6 @@ public class HealthUIController : MonoBehaviour
         {
             gameOver.gameObject.SetActive(true);
             Time.timeScale = 0;
-            restartButton.onClick.AddListener(RestartLevel);
-            
         }
     }
 
