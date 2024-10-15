@@ -9,6 +9,7 @@ public class playerController : MonoBehaviour
     public BoxCollider2D playercollider;
     public ScoreController scoreController;
     public GameManager gameManager;
+    public GameOverController gameOverController;
 
     public float speed;
     public float jumpForce;
@@ -115,6 +116,7 @@ public class playerController : MonoBehaviour
         Debug.Log("Player is Dead");
         mainCamera.transform.parent = null;
         Destroy(gameObject);
+        gameOverController.PlayerDied();
     }
 
     public void reducePlayerHealth()
@@ -123,6 +125,7 @@ public class playerController : MonoBehaviour
         if(HealthUIController.health <= 0)
         {
             KillPlayer();
+            
         }
         else
         {

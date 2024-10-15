@@ -5,12 +5,13 @@ using UnityEngine.UI;
 using System;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(Button))]
 public class LevelLoader : MonoBehaviour
 {
     private Button button;
-    public String LevelName;
+    public string LevelName;
 
-    private void Awake()
+    private void Start()
     {
         button = GetComponent<Button>();
         button.onClick.AddListener(onClick);
@@ -18,6 +19,22 @@ public class LevelLoader : MonoBehaviour
 
     private void onClick()
     {
-        SceneManager.LoadScene(LevelName);
+        LevelStatus levelStatus = LevelManager.Instance.GetLevelStatus(LevelName);
+        switch(levelStatus)
+        {
+            case LevelStatus.Locked:
+                Debug.Log("Can't play this level");
+                break;
+
+            case LevelStatus.Unlocked:
+                SceneManager.LoadScene(LevelName);
+                break;
+
+            case LevelStatus.Completed:
+                SceneManager.LoadScene(LevelName);
+                break;
+
+        }
+        
     }
 }

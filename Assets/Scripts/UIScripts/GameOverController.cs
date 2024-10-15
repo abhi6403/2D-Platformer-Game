@@ -14,7 +14,10 @@ public class GameOverController : MonoBehaviour
         restartButton.onClick.AddListener(reloadLevel);
     }
 
-    
+    public void PlayerDied()
+    {
+        gameObject.SetActive(true);
+    }
     private void reloadLevel()
     {
         Debug.Log("Reloading Scene...");
