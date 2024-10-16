@@ -95,4 +95,5 @@ public enum Sounds
     MUSIC,
     LEVELCOMPLETE,
     PLAYERHEALTH,
+    GAMEFINISHED,
 }

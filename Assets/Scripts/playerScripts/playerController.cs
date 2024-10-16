@@ -114,6 +114,7 @@ public class playerController : MonoBehaviour
     public void KillPlayer()
     {
         Debug.Log("Player is Dead");
+        SoundManager.Instance.Play(Sounds.PLAYERDEATH);
         mainCamera.transform.parent = null;
         Destroy(gameObject);
         gameOverController.PlayerDied();

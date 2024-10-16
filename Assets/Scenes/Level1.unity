@@ -8949,11 +8949,28 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameOverObject
       objectReference: {fileID: 0}
+    - target: {fileID: 6843008611406248835, guid: 63d207bbcb8324340807b56c0f8a89ee,
+        type: 3}
+      propertyPath: lobbyButton
+      value: 
+      objectReference: {fileID: 8927733048404605122}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63d207bbcb8324340807b56c0f8a89ee, type: 3}
+--- !u!114 &8927733048404605122 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4345121636123256236, guid: 63d207bbcb8324340807b56c0f8a89ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 8927733048404605121}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -21,7 +21,7 @@ public class GameFinished : MonoBehaviour
         if (collision.gameObject.GetComponent<playerController>() != null)
         {
             Debug.Log("Level Completed");
-            SoundManager.Instance.Play(Sounds.LEVELCOMPLETE);
+            SoundManager.Instance.Play(Sounds.GAMEFINISHED);
             gameFinished.SetActive(true);
         }
     }
