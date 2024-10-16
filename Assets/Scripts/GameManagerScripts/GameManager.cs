@@ -8,8 +8,10 @@ public class GameManager : MonoBehaviour
 
     public GameObject player;
     public Transform respawnPoint;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //respawn when fall down
         if (collision.gameObject.GetComponent<playerController>() != null)
         {
             playerController player = collision.gameObject.GetComponent<playerController>();

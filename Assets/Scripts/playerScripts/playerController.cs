@@ -95,6 +95,7 @@ public class playerController : MonoBehaviour
 
     void playerJumpMovement()
     {
+        //Jump movement
         if (Input.GetButtonDown("Jump") && isGrounded == true) 
         {
             playerRigidBody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
@@ -104,7 +105,7 @@ public class playerController : MonoBehaviour
 
     public void crouchMovement()
     {
-
+        //Crouch movement
         if (Input.GetButtonDown("Crouch"))
         {
             crouch = true;

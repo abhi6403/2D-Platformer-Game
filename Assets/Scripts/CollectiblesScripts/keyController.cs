@@ -13,6 +13,7 @@ public class keyController : MonoBehaviour
     {
         if(collision.gameObject.GetComponent<playerController>()  != null)
         {
+            //Collecting key
             playerController player = collision.gameObject.GetComponent<playerController>();
             player.PickUpKey();
             Destroy(gameObject);

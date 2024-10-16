@@ -10,14 +10,9 @@ public class EnemyController : MonoBehaviour
 
     bool isRight = true;
 
-
-    private void Start()
-    {
-        
-    }
-
     private void Update()
     {
+        //patrolling movement
         transform.Translate(Vector2.right * speed *  Time.deltaTime);
 
         RaycastHit2D hitInfo = Physics2D.Raycast(GroundCheck.position, Vector2.down, radius);
@@ -38,6 +33,7 @@ public class EnemyController : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //reducing player life on collision
         if (collision.gameObject.GetComponent<playerController>() != null)
         {
             playerController player = collision.gameObject.GetComponent<playerController>();
