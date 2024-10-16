@@ -23,12 +23,14 @@ public class GameOverController : MonoBehaviour
     private void reloadLevel()
     {
         Debug.Log("Reloading Scene...");
+        SoundManager.Instance.Play(Sounds.BUTTONCLICK);
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
     }
 
     private void loadLobby()
     {
+        SoundManager.Instance.Play(Sounds.BUTTONCLICK);
         SceneManager.LoadScene(0);
     }
 }

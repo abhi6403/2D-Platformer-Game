@@ -21,12 +21,14 @@ public class GameFinished : MonoBehaviour
         if (collision.gameObject.GetComponent<playerController>() != null)
         {
             Debug.Log("Level Completed");
+            SoundManager.Instance.Play(Sounds.LEVELCOMPLETE);
             gameFinished.SetActive(true);
         }
     }
 
     private void loadLobby()
     {
+        SoundManager.Instance.Play(Sounds.BUTTONCLICK);
         SceneManager.LoadScene(0);
     }
 }

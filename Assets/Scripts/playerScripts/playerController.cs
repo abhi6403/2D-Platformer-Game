@@ -122,13 +122,14 @@ public class playerController : MonoBehaviour
     public void reducePlayerHealth()
     {
         Debug.Log("Reduced health by one");
-        if(HealthUIController.health <= 0)
+        if(HealthUIController.health < 1)
         {
             KillPlayer();
             
         }
         else
         {
+            SoundManager.Instance.Play(Sounds.PLAYERHEALTH);
             HealthUIController.health -= 1;
         }
     }
