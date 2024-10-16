@@ -10,7 +10,7 @@ public class HealthUIController : MonoBehaviour
 {
     public static int health;
 
-    public GameObject heart0, heart1, heart2, gameOver;
+    public GameObject heart0, heart1, heart2;
     //public Button restartButton;
 
     private void Start()
@@ -59,12 +59,6 @@ public class HealthUIController : MonoBehaviour
                 heart2.gameObject.SetActive(false);
                 break;
 
-        }
-
-        if(health <= 0)
-        {
-            gameOver.gameObject.SetActive(true);
-            Time.timeScale = 0;
         }
     }
 
