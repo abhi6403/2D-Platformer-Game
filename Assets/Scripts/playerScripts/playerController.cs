@@ -8,22 +8,23 @@ public class playerController : MonoBehaviour
     public Animator playeranimator;
     public BoxCollider2D playercollider;
     public ScoreController scoreController;
-    public GameManager gameManager;
     public GameOverController gameOverController;
 
     public float speed;
     public float jumpForce;
-    public bool crouch;
+    public List<GameObject> hearts;
 
-    //public Transform groundCheck;
-    //public LayerMask groundLayer;
+    private int playerLives = 3;
+    private bool movePlayer = false;
+    private bool crouch;
+    private bool isDead = false;
 
     private Vector2 boxColliderSize;
     private Vector2 boxColliderOffset;
     private Rigidbody2D playerRigidBody;
     private Camera mainCamera;
 
-    //private bool isGrounded = false;
+    private bool isGrounded = false;
 
     private void Start()
     {
@@ -35,21 +36,40 @@ public class playerController : MonoBehaviour
     }
     public void Update()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        if (isDead == false)
+        {
+            if (isGrounded)
+            {
+                movePlayer = true;
+            }
+            else
+            {
+                movePlayer = false;
+            }
 
-        HorizontalAnimation(horizontal);
-        playerJumpMovement(vertical);
-        playerMovement(horizontal);
-        crouchMovement();
-        //crouchAnimation();
+
+            float horizontal = Input.GetAxisRaw("Horizontal");
+
+            HorizontalAnimation(horizontal);
+            playerJumpMovement();
+            playerMovement(horizontal);
+            crouchMovement();
+        }
     }
 
     private void HorizontalAnimation(float horizontal)
     {
+        if (movePlayer == true)
+        {
+            if(horizontal >= 0)
+            {
+                playeranimator.SetFloat("speed", Mathf.Abs(horizontal));
+            }else
+            {
+                playeranimator.SetFloat("speed", 0);
+            }
+        }
         
-        playeranimator.SetFloat("speed", Mathf.Abs(horizontal));
-
         //Running animation
         Vector3 scale = transform.localScale;
         if (horizontal < 0)
@@ -66,15 +86,16 @@ public class playerController : MonoBehaviour
     public void playerMovement(float horizontal)
     {
         //Horizontal movement
-        Vector3 position = transform.position;
-        position.x = position.x + horizontal * speed * Time.deltaTime;
-        transform.position = position;
+            Vector3 position = transform.position;
+            position.x = position.x + horizontal * speed * Time.deltaTime;
+            transform.position = position;
+        
         
     }
 
-    void playerJumpMovement(float vertical)
+    void playerJumpMovement()
     {
-        if (vertical >  0)// && isGrounded)
+        if (Input.GetButtonDown("Jump") && isGrounded == true) 
         {
             playerRigidBody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
             playeranimator.SetTrigger("Jump");
@@ -83,7 +104,8 @@ public class playerController : MonoBehaviour
 
     public void crouchMovement()
     {
-        if(Input.GetButtonDown("Crouch"))
+
+        if (Input.GetButtonDown("Crouch"))
         {
             crouch = true;
             float offX = 0.000975f;
@@ -94,16 +116,20 @@ public class playerController : MonoBehaviour
 
             playercollider.size = new Vector2(sizeX, sizeY);
             playercollider.offset = new Vector2(offX, offY);
-            playeranimator.SetBool("Crouch",crouch); 
+            playeranimator.SetBool("Crouch", crouch);
 
-        } else if (Input.GetButtonUp("Crouch"))
+        }
+        else if (Input.GetButtonUp("Crouch"))
         {
             crouch = false;
             playercollider.size = boxColliderSize;
             playercollider.offset = boxColliderOffset;
             playeranimator.SetBool("Crouch", crouch);
         }
+
+
     }
+
 
     public void PickUpKey()
     {
@@ -113,31 +139,37 @@ public class playerController : MonoBehaviour
     
     public void KillPlayer()
     {
-        Debug.Log("Player is Dead");
+        if(playerLives >= 1)
+        {
+            ReducePlayerLives();
+        } 
+        else if(playerLives == 0) 
+        {
+            PlayerDeath();
+        }
+    }
+
+    public void ReducePlayerLives()
+    {
+        playerLives--;
+        hearts[playerLives].SetActive(false);
+        SoundManager.Instance.Play(Sounds.PLAYERHEALTH);
+        Debug.Log("reduced lives by one");
+    }
+    private void PlayerDeath()
+    {
         SoundManager.Instance.Play(Sounds.PLAYERDEATH);
+        playeranimator.SetTrigger("Death");
+        isDead = true;
         mainCamera.transform.parent = null;
-        Destroy(gameObject);
+        Debug.Log("Player is Dead");
         gameOverController.PlayerDied();
     }
 
-    public void reducePlayerHealth()
+    
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("Reduced health by one");
-        if(HealthUIController.health < 1)
-        {
-            KillPlayer();
-            
-        }
-        else
-        {
-            SoundManager.Instance.Play(Sounds.PLAYERHEALTH);
-            HealthUIController.health -= 1;
-        }
-    }
-
-   /* private void OnCollisionStay2D(Collision2D other)
-    {
-        if(other.transform.tag == "Ground")
+        if (other.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
         }
@@ -145,44 +177,9 @@ public class playerController : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        if (other.transform.tag == "Ground")
+        if (other.gameObject.CompareTag("Ground"))
         {
             isGrounded = false;
         }
     }
-    /*bool isGrounded()
-   {
-       return Physics2D.OverlapCapsule(groundCheck.position, new Vector2(0.58f, 0.07f), CapsuleDirection2D.Horizontal, 0,groundLayer);
-   }
-
-    /*public void crouchAnimation()
-    {
-        if (Input.GetKey(KeyCode.LeftControl))
-        {
-            Crouch(true);
-        } else
-        {
-            Crouch(false);
-        }
-    }
-
-    public void Crouch(bool crouch)
-    {
-        if(crouch == true)
-        {
-            float offX = 0.000975f;
-            float offY = 0.5f;
-
-            float sizeX = 0.33f;
-            float sizeY = 1.02f;
-
-            playercollider.size = new Vector2 (sizeX, sizeY);
-            playercollider.offset = new Vector2 (offX, offY);
-        } else
-        {
-            playercollider.size = boxColliderSize;
-            playercollider.offset = boxColliderOffset;
-        }
-        playeranimator.SetBool("Crouch",crouch);
-    }*/
 }

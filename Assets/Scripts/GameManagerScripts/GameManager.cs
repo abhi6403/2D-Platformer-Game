@@ -13,13 +13,8 @@ public class GameManager : MonoBehaviour
         if (collision.gameObject.GetComponent<playerController>() != null)
         {
             playerController player = collision.gameObject.GetComponent<playerController>();
-            player.reducePlayerHealth();
+            player.KillPlayer();
             player.transform.position = respawnPoint.position;
         }
-        /*if (other.gameObject.CompareTag("Player"))
-        {
-            player.transform.position = respawnPoint.position;
-
-        }*/
     }
 }

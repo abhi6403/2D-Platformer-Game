@@ -9,7 +9,7 @@ public class SpikesController : MonoBehaviour
         if (collision.gameObject.GetComponent<playerController>() != null)
         {
             playerController player = collision.gameObject.GetComponent<playerController>();
-            player.reducePlayerHealth();
+            player.KillPlayer();
         }
     }
 }

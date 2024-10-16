@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4099265356010788789}
   - component: {fileID: 1957810740195732965}
   - component: {fileID: 7973636194878526080}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c4d7d6470acd7bf45971042161c6e018, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -175,13 +175,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playeranimator: {fileID: 7973636194878526080}
   playercollider: {fileID: 4099265356010788789}
+  scoreController: {fileID: 0}
+  gameOverController: {fileID: 0}
   speed: 5
-  jumpForce: 5
-  groundCheck: {fileID: 0}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  crouch: 0
+  jumpForce: 375
+  hearts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!95 &7973636194878526080
 Animator:
   serializedVersion: 5
@@ -213,8 +214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6746029777331897846}
   - component: {fileID: 7101435563611609458}
-  - component: {fileID: 892134559602030376}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -230,7 +230,7 @@ Transform:
   m_GameObject: {fileID: 4922857678709370131}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.02, y: 1.33, z: -10}
+  m_LocalPosition: {x: 0, y: 1.14, z: -10}
   m_LocalScale: {x: 0.46412262, y: 0.46412262, z: 0.46412262}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -271,7 +271,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.3
+  orthographic size: 6.63
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -287,11 +287,3 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &892134559602030376
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4922857678709370131}
-  m_Enabled: 1
