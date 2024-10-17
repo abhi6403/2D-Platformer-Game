@@ -6874,6 +6874,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playButton: {fileID: 418265481}
   levelSelection: {fileID: 386817762}
+  quitButton: {fileID: 1218349378}
 --- !u!114 &1332862341
 MonoBehaviour:
   m_ObjectHideFlags: 0

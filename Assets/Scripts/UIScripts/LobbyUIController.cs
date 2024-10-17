@@ -9,11 +9,13 @@ public class LobbyUIController : MonoBehaviour
 {
     public Button playButton;
     public GameObject levelSelection;
+    public Button quitButton; 
 
 
     public void Start()
     {
         playButton.onClick.AddListener(PlayGame);
+        quitButton.onClick.AddListener(QuitGame);
         PlayerPrefs.DeleteAll();
     }
 
@@ -21,5 +23,11 @@ public class LobbyUIController : MonoBehaviour
     { 
         SoundManager.Instance.Play(Sounds.BUTTONCLICK);
         levelSelection.SetActive(true);
+    }
+
+    private void QuitGame()
+    {
+        SoundManager.Instance.Play(Sounds.BUTTONCLICK);
+        Application.Quit();
     }
 }
