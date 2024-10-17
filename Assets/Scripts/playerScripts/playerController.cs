@@ -38,7 +38,7 @@ public class playerController : MonoBehaviour
     {
         if (isDead == false)
         {
-            if (isGrounded)
+            if (isGrounded == true)
             {
                 movePlayer = true;
             }
@@ -61,7 +61,7 @@ public class playerController : MonoBehaviour
     {
         if (movePlayer == true)
         {
-            if(horizontal >= 0)
+            if(horizontal > 0)
             {
                 playeranimator.SetFloat("speed", Mathf.Abs(horizontal));
             }else

@@ -2746,9 +2746,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2113389848}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -383, y: 180}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 117, y: -32}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1196196499
@@ -4453,32 +4453,32 @@ PrefabInstance:
     - target: {fileID: 1778601719917921011, guid: 63d207bbcb8324340807b56c0f8a89ee,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1778601719917921011, guid: 63d207bbcb8324340807b56c0f8a89ee,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1778601719917921011, guid: 63d207bbcb8324340807b56c0f8a89ee,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1778601719917921011, guid: 63d207bbcb8324340807b56c0f8a89ee,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1778601719917921011, guid: 63d207bbcb8324340807b56c0f8a89ee,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 265.69
+      value: -734.31
       objectReference: {fileID: 0}
     - target: {fileID: 1778601719917921011, guid: 63d207bbcb8324340807b56c0f8a89ee,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 124.99
+      value: -299.01
       objectReference: {fileID: 0}
     - target: {fileID: 1778601719917921011, guid: 63d207bbcb8324340807b56c0f8a89ee,
         type: 3}
@@ -4518,12 +4518,12 @@ PrefabInstance:
     - target: {fileID: 1778601719917921011, guid: 63d207bbcb8324340807b56c0f8a89ee,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.006073
+      value: 0.006072998
       objectReference: {fileID: 0}
     - target: {fileID: 1778601719917921011, guid: 63d207bbcb8324340807b56c0f8a89ee,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -2.8271
+      value: -2.8271027
       objectReference: {fileID: 0}
     - target: {fileID: 1778601719917921011, guid: 63d207bbcb8324340807b56c0f8a89ee,
         type: 3}
@@ -4544,6 +4544,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameOverObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 3419956749723152924, guid: 63d207bbcb8324340807b56c0f8a89ee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

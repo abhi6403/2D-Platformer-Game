@@ -13,7 +13,7 @@ public class LobbyUIController : MonoBehaviour
     public void Start()
     {
         playButton.onClick.AddListener(PlayGame);
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
     }
 
     private void PlayGame()
